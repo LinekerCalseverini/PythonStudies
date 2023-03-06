@@ -1,3 +1,4 @@
+#!/usr/local/bin/python3
 # conversão de tipos, coerção
 # type conversion, typecasting, coercion
 # é o ato de converter um tipo em outro
