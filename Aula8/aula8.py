@@ -3,7 +3,7 @@ nome = 'Lineker'
 sobrenome = 'Calseverini'
 idade = 27
 ano_nascimento = 1996
-maior_de_idade = idade >= 27
+maior_de_idade = idade >= 18
 altura_metros = 1.79
 
 print('Nome:', nome)
