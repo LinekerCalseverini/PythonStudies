@@ -3,8 +3,8 @@
 # Como já conseguimos trabalhar com argumentos, estou testando variáveis de ambiente no docker
 import os
 nome = os.environ['NOME']
-altura = os.environ['ALTURA']
-peso = os.environ['PESO']
+altura = float(os.environ['ALTURA'])
+peso = float(os.environ['PESO'])
 imc = peso / altura ** 2
 
 # Luiz Otávio tem 1.80 de altura,
