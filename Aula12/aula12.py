@@ -1,8 +1,10 @@
 #!/usr/local/bin/python3
 # Exercício (clássico): cálculo de IMC
-nome = 'Luiz Otávio'
-altura = 1.80
-peso = 95
+# Como já conseguimos trabalhar com argumentos, estou testando variáveis de ambiente no docker
+import os
+nome = os.environ['NOME']
+altura = os.environ['ALTURA']
+peso = os.environ['PESO']
 imc = peso / altura ** 2
 
 # Luiz Otávio tem 1.80 de altura,
