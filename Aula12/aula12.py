@@ -1,6 +1,11 @@
 #!/usr/local/bin/python3
 # Exercício (clássico): cálculo de IMC
 # Como já conseguimos trabalhar com argumentos, estou testando variáveis de ambiente no docker
+
+# Variáveis de ambiente são consideradas string para o Python, então é necessário fazer um casting.
+
+# Comando docker para rodar esse container:
+# docker run --rm -e "NOME={nome}" -e "PESO={peso}" -e "ALTURA={altura}" python:aula12
 import os
 nome = os.environ['NOME']
 altura = float(os.environ['ALTURA'])
