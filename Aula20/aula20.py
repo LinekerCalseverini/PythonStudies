@@ -1,5 +1,6 @@
 #!/usr/local/bin/python3
 # Exercício: Utilizando comparadores, escrever um programa que recebe dois valores e diz qual é o maior.
+input()
 primeiro_valor = input('Digite um valor: ')
 segundo_valor = input('Digite outro valor: ')
 
