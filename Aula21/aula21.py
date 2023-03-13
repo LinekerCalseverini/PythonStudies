@@ -11,7 +11,7 @@
 # usado para representar um não valor
 
 entrada = ('[E]ntrar [S]air: ')
-senha_digitada = input("Ensar: ")
+senha_digitada = input("Entrada: ")
 senha_permitida = '123456'
 
 # if True:
