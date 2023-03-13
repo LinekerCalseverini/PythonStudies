@@ -5,8 +5,8 @@ segundo_valor = input('Digite outro valor: ')
 
 resposta = ['primeiro',primeiro_valor,'segundo',segundo_valor]
 
-if segundo_valor < primeiro_valor:
-    resposta = ['primeiro',primeiro_valor,'segundo',segundo_valor]
+if segundo_valor > primeiro_valor:
+    resposta = ['segundo',segundo_valor,'primeiro',primeiro_valor]
 
 if primeiro_valor != segundo_valor:
     resposta.append('maior que ')
