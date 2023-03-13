@@ -10,7 +10,7 @@
 # Também existe o tipo None que é
 # usado para representar um não valor
 
-entrada = ('[E]ntrar [S]air: ')
+entrada = input('[E]ntrar [S]air: ')
 senha_digitada = input("Entrada: ")
 senha_permitida = '123456'
 
