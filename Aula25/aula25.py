@@ -1,27 +1,13 @@
 #!/usr/bin/local/python3
-# Operadores in e not in
-# Strings são iteráveis
-#  0  1  2  3  4  5
-#  O  t  á  v  i  o
-# -6 -5 -4 -3 -2 -1
-nome = 'Otávio'
+# Interpolação básica de strings
+# s - string
+# d e i - int
+# f - float
+# x e X - Hexadecimal (0123456789ABCDEF)
 
-print(nome[2]) # = á
-print(nome[-4]) # = á
+nome = 'Luiz'
+preco = 1000.95897643
+variavel = '%s, o preço é R$%.2f' % (nome,preco)
 
-print('á' in nome) # = True
-print('z' in nome) # = False
-
-print('vio' in nome) # = True
-print('zero' in nome) # = False
-
-print('vio' not in nome) # = False
-print('zero' not in nome) # = True
-
-nome = input('Digite seu nome: ')
-encontrar = input('Digite o que deseja encontrar: ')
-
-if encontrar in nome:
-    print(f'{encontrar} está em {nome}')
-else:
-    print(f'{encontrar} não está em {nome}')
+print(variavel)
+print('O hexadecimal de %d é %04x' % (1500,1500))
