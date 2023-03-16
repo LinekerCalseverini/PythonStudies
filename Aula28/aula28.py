@@ -16,7 +16,7 @@
 nome = input('Digite seu nome: ')
 idade = input('Digite sua idade: ')
 
-if (nome or idade):
+if nome and idade:
     if ' ' in nome:
         print('Seu nome contém espaços')
     else:
