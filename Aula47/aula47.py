@@ -51,6 +51,8 @@
 # print(f'Parabéns, você levou {tentativas} tentativas para acertar.')
 
 # Solução do professor
+import os
+
 print('{:-^30}'.format('Exercício: Palavra Secreta'))
 palavra_secreta = 'perfume'
 letras_acertadas = ''
@@ -59,7 +61,6 @@ jogo_iniciado = True
 
 while jogo_iniciado:
     chute = input('Digite uma letra: ')
-
     if len(chute) > 1:
         print('Digite apenas uma letra.')
         tentativas += 1
@@ -83,6 +84,8 @@ while jogo_iniciado:
     jogo_iniciado = palavra_formada != palavra_secreta
 
     print(palavra_formada)
+    input()
+    os.system('cls')
     tentativas += 1
 else:
     print(f'Parabéns, você levou {tentativas} tentativas para acertar.')
