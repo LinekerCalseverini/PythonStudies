@@ -12,6 +12,9 @@ while True:
     os.system('cls')
     print('{:-^30}'.format('Lista de Compras'))
     if listar:
+        if len(lista_compras) == 0:
+            print('Nada para listar')
+            
         for indice, item in enumerate(lista_compras):
             print(f'{indice} - {item:<15}')
         listar = False
