@@ -9,6 +9,14 @@
 # *         [1, 2, 3, 3, 2, 1] -> 1, 2 e 3 são duplicados (retorne 3)
 # *         [1, 2, 3, 4, 5, 6] -> Retorne -1 (não tem duplicados)
 # *     Se não encontrar duplicados na lista, retorne -1
+def procurar_primeiro_repetido(lista):
+    colecao = set()
+    i = 0
+    for elemento in lista: 
+        if elemento in colecao:
+            return elemento
+        colecao.add(elemento)
+    return -1
 
 lista_de_listas_de_inteiros = [
     [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -24,3 +32,10 @@ lista_de_listas_de_inteiros = [
     [5, 3, 1, 8, 5, 7, 1, 8, 8, 7],
     [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 ]
+lista_de_repetidos = []
+
+for lista in lista_de_listas_de_inteiros:
+    valor = procurar_primeiro_repetido(lista)
+    lista_de_repetidos.append(valor)
+
+print(lista_de_repetidos)
