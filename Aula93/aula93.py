@@ -1,4 +1,7 @@
 # Try, except, else e finally
+string = 'Luiz'
+print(isinstance(string,str))
+
 a = 18
 b = None
 try:
@@ -7,5 +10,7 @@ try:
     print('Linha 2')
 except ZeroDivisionError:
     print('Divisão por zero')
-except (NameError, TypeError):
-    print('Não houve definição de \'b\'')
+except (NameError, TypeError) as e:
+    print('Não houve definição correta de \'b\'')
+    print('TIPO: ', e.__class__.__name__)
+    print('MSG: ', e)
