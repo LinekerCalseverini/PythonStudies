@@ -9,7 +9,7 @@
 # print(aula99_package.aula99_m.soma_do_modulo(1,2))
 # print(aula99_m.soma_do_modulo(1,2))
 # print(variavel)
-# print(nova_variavel) # Não existe
-from aula99_package.aula99_m1 import fala_oi, soma_do_modulo
+# print(nova_variavel) # Não existe]
+import aula99_package
 print(__name__)
-fala_oi()
+aula99_package.fala_oi()
