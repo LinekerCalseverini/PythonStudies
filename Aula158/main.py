@@ -35,7 +35,32 @@ Banco será responsável autenticar o cliente e as contas da seguinte maneira:
 Só será possível sacar se passar na autenticação do banco (descrita acima)
 Banco autentica por um método.
 """
-from abc import ABC
+from conta_banco import ContaCorrente, ContaPoupanca
+from cliente import Cliente
+from banco import Banco
 
-class Conta(ABC):
-    ...
+
+conta_corrente = ContaCorrente('0000', '0000000', 0, 200)
+conta_poupanca = ContaPoupanca('0000', '1000000', 0)
+
+print(conta_poupanca.saldo)
+conta_poupanca.depositar(100)
+conta_poupanca.sacar(50)
+print(conta_poupanca.saldo)
+
+print()
+print(conta_corrente)
+print()
+print(conta_poupanca)
+print()
+
+cliente_a = Cliente('Lineker', 27)
+cliente_b = Cliente('Filipe', 28)
+
+Banco.adicionar_conta(cliente_a, conta_corrente)
+Banco.adicionar_conta(cliente_a, conta_poupanca)
+
+Banco.adicionar_conta(cliente_b, ContaCorrente('0000','0000001', 0, 1500))
+Banco.adicionar_conta(cliente_b, ContaPoupanca('0000','1000001', 0))
+
+Banco.listar_clientes()
