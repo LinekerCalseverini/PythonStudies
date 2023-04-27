@@ -1,28 +1,26 @@
 from conta_banco import Conta
 from cliente import Cliente
 
+
 class Banco:
-    _clientes = set()
-    
-    @classmethod
-    def adicionar_conta(cls, cliente: Cliente, conta: Conta) -> None:
+    def __init__(self) -> None:
+        self._clientes: set[Cliente] = set()
+
+    def adicionar_conta(self, cliente: Cliente, conta: Conta) -> None:
         if not isinstance(conta, Conta):
             raise TypeError('Cannot add non-Conta type to list')
 
         cliente.contas.append(conta)
-        cls._clientes.add(cliente)
+        self._clientes.add(cliente)
 
     @property
-    @classmethod
-    def clientes(cls):
-        return cls._clientes
+    def clientes(self):
+        return self._clientes
 
     @clientes.setter
-    @classmethod
-    def clientes(cls, *args, **kwargs):
+    def clientes(self):
         raise AttributeError('Cannot change client list')
 
-    @classmethod
-    def listar_clientes(cls):
-        for cliente in cls._clientes:
+    def listar_clientes(self) -> None:
+        for cliente in self.clientes:
             print(cliente)

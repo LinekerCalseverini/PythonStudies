@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class InvalidAccountOperationError(Exception):
     pass
 
@@ -8,11 +9,11 @@ class Conta(ABC):
     def __init__(self,
                  agencia: str,
                  numero_conta: str,
-                 saldo: float = 0) -> None:
+                 saldo: float = 0.0) -> None:
         self._agencia = agencia
         self._numero_conta = numero_conta
-        self._saldo = 0        
-    
+        self._saldo = saldo
+
     @abstractmethod
     def depositar(self, quantia: float) -> None: ...
 
@@ -20,7 +21,7 @@ class Conta(ABC):
     def sacar(self, quantia: float) -> None: ...
 
     @property
-    def agencia(self) -> float:
+    def agencia(self) -> str:
         return self._agencia
 
     @agencia.setter
@@ -29,8 +30,8 @@ class Conta(ABC):
             'Impossível alterar a agência de uma conta'
             )
 
-    @property        
-    def numero_conta(self) -> float:
+    @property
+    def numero_conta(self) -> str:
         return self._numero_conta
 
     @numero_conta.setter
@@ -49,9 +50,15 @@ class Conta(ABC):
             'Impossível alterar o saldo diretamente'
             )
 
+    def mostrar_saldo(self):
+        if self.saldo < 0:
+            return f'-R${abs(self.saldo):,.2f}'
+
+        return f'R${self.saldo:,.2f}'
+
     def __str__(self):
         return f'Agência: {self.agencia}\nConta: {self.numero_conta}\n' \
-               f'Saldo: {self.saldo}'
+               f'Saldo: {self.mostrar_saldo()}'
 
 
 class ContaCorrente(Conta):
@@ -68,27 +75,21 @@ class ContaCorrente(Conta):
         return self._limite
 
     @limite.setter
-    def limite(self, limite):
+    def limite(self, limite: float):
         self._limite = limite
 
     def depositar(self, quantia: float) -> None:
-        if self._limite < 0:
-            self._limite = 0
-            self._saldo += quantia - self._limite
-        else:
-            self._saldo += quantia
+        self._saldo += quantia
 
     def sacar(self, quantia: float) -> None:
         if quantia > self._saldo + self._limite:
             print('Saldo insuficiente')
-        elif quantia > self._saldo:
-            self._limite += self._saldo - quantia
-            self._saldo = 0
-        else:
-            self._saldo -= quantia
+            return
+
+        self._saldo -= quantia
 
     def __str__(self):
-        return f'{super().__str__()}\nLimite: {self.limite}'
+        return f'{super().__str__()}\nLimite: R${self.limite:,.2f}'
 
 
 class ContaPoupanca(Conta):
@@ -98,5 +99,6 @@ class ContaPoupanca(Conta):
     def sacar(self, quantia: float) -> None:
         if quantia > self._saldo:
             print('Saldo insuficiente')
-        else:
-            self._saldo -= quantia
+            return
+
+        self._saldo -= quantia

@@ -1,15 +1,16 @@
 from pessoa import Pessoa
-from conta_banco import Conta, InvalidAccountOperationError
+from conta_banco import InvalidAccountOperationError
+
 
 class Cliente(Pessoa):
     def __init__(self, nome: str, idade: int) -> None:
         super().__init__(nome, idade)
-        self._contas = []
+        self._contas: list[Cliente] = []
 
     @property
     def contas(self) -> list:
         return self._contas
-    
+
     @contas.setter
     def contas(self, *args, **kwargs) -> None:
         raise InvalidAccountOperationError('Cannot change account list')
