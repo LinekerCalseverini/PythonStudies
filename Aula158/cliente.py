@@ -20,7 +20,7 @@ class Cliente(Pessoa):
         idade = f'Idade: {self._idade}'
         contas = ''
         for conta in self._contas:
-            contas += f'[{conta.__class__.__name__}]\n{conta}\n\n'
+            contas += f'{conta}\n\n'
         return f'--------------------------------------\n' \
                f'{nome}\n{idade}\n\n{contas}' \
                f'--------------------------------------\n'

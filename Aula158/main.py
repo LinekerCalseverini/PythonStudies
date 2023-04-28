@@ -40,16 +40,16 @@ from cliente import Cliente
 from banco import Banco
 
 
-conta_corrente = ContaCorrente('0000', '0000000', 0, 200)
-conta_poupanca = ContaPoupanca('0000', '1000000', 0)
+conta_corrente = ContaCorrente('0000', '0000000', 0.0, 200.0)
+conta_poupanca = ContaPoupanca('0000', '1000000', 0.0)
 
 
-conta_corrente.sacar(200)
+conta_corrente.sacar(200.0)
 print(conta_corrente)
 print()
 print(conta_poupanca.saldo)
-conta_poupanca.depositar(100)
-conta_poupanca.sacar(50)
+conta_poupanca.depositar(100.0)
+conta_poupanca.sacar(50.0)
 print(conta_poupanca.saldo)
 
 print()
@@ -65,7 +65,12 @@ banco = Banco()
 banco.adicionar_conta(cliente_a, conta_corrente)
 banco.adicionar_conta(cliente_a, conta_poupanca)
 
-banco.adicionar_conta(cliente_b, ContaCorrente('0000', '0000001', 0, 1500))
-banco.adicionar_conta(cliente_b, ContaPoupanca('0000', '1000001', 0))
+banco.adicionar_conta(cliente_b, ContaCorrente('0000', '0000001', 0.0, 1500.0))
+banco.adicionar_conta(cliente_b, ContaPoupanca('0000', '1000001', 0.0))
 
 banco.listar_clientes()
+
+banco.buscar_clientes('Lineker')
+banco.buscar_agencia('0000')
+print()
+banco.buscar_conta('0000001')
