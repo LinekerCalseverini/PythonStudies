@@ -1,0 +1,1 @@
+from modulos_extras.produtos_modulo import produtos
