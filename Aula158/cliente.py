@@ -1,14 +1,14 @@
 from pessoa import Pessoa
-from conta_banco import InvalidAccountOperationError
+from conta_banco import Conta, InvalidAccountOperationError
 
 
 class Cliente(Pessoa):
     def __init__(self, nome: str, idade: int) -> None:
         super().__init__(nome, idade)
-        self._contas: list[Cliente] = []
+        self._contas: list[Conta] = []
 
     @property
-    def contas(self) -> list:
+    def contas(self) -> list[Conta]:
         return self._contas
 
     @contas.setter

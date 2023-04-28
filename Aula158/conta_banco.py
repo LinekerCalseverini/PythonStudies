@@ -6,6 +6,11 @@ class InvalidAccountOperationError(Exception):
 
 
 class Conta(ABC):
+    @property
+    @abstractmethod
+    def _TIPO_CONTA(cls) -> str:
+        pass
+
     def __init__(self,
                  agencia: str,
                  numero_conta: str,
@@ -57,6 +62,10 @@ class Conta(ABC):
             'Impossível alterar o saldo diretamente'
             )
 
+    @property
+    def tipo_conta(self) -> str:
+        return self._TIPO_CONTA
+
     def mostrar_saldo(self):
         if self.saldo < 0:
             return f'-R${abs(self.saldo):,.2f}'
@@ -64,11 +73,15 @@ class Conta(ABC):
         return f'R${self.saldo:,.2f}'
 
     def __str__(self):
-        return f'[{self.__class__.__name__}]\nAgência: {self.agencia}\n' \
+        return f'[{self.tipo_conta}]\nAgência: {self.agencia}\n' \
                f'Conta: {self.numero_conta}\nSaldo: {self.mostrar_saldo()}'
 
 
 class ContaCorrente(Conta):
+    @property
+    def _TIPO_CONTA(cls) -> str:
+        return 'Conta Corrente'
+
     def __init__(self,
                  agencia: str,
                  numero_conta: str,
@@ -111,6 +124,10 @@ class ContaCorrente(Conta):
 
 
 class ContaPoupanca(Conta):
+    @property
+    def _TIPO_CONTA(cls) -> str:
+        return 'Conta Poupança'
+
     def depositar(self, quantia: float) -> None:
         if not isinstance(quantia, float):
             raise TypeError('quantia must be type float')
