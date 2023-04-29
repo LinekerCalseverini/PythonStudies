@@ -40,7 +40,7 @@ class Conta(ABC):
     def agencia(self, *args, **kwargs) -> None:
         raise InvalidAccountOperationError(
             'Impossível alterar a agência de uma conta'
-            )
+        )
 
     @property
     def numero_conta(self) -> str:
@@ -50,7 +50,7 @@ class Conta(ABC):
     def numero_conta(self, *args, **kwargs) -> None:
         raise InvalidAccountOperationError(
             'Impossível alterar o número de uma conta'
-            )
+        )
 
     @property
     def saldo(self) -> float:
@@ -60,7 +60,7 @@ class Conta(ABC):
     def saldo(self, *args, **kwargs) -> None:
         raise InvalidAccountOperationError(
             'Impossível alterar o saldo diretamente'
-            )
+        )
 
     @property
     def tipo_conta(self) -> str:
