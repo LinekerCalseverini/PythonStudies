@@ -31,6 +31,7 @@
       "--max-line-length=80"
       // "--ignore=E111"
     ],
+    "python.terminal.activateEnvironment":true,
     "python.linting.flake8Args": [
       // "--ignore=E111",
     ],
