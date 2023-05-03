@@ -8,3 +8,15 @@
 # - Trabalhar com coisas específicas de calendários (ex.: calendar, month)
 # Por padrão dia da semana começa em 0 até 6
 # 0 = segunda-feira | 6 = domingo
+import calendar
+
+# print(calendar.calendar(2022))
+# print(calendar.month(2022, 12))
+# numero_primeiro_dia, ultimo_dia = calendar.monthrange(2022, 12)
+# print(calendar.day_name[numero_primeiro_dia])
+# print(calendar.day_name[calendar.weekday(2022, 12, ultimo_dia)])
+for week in calendar.monthcalendar(2022, 12):
+    for day in week:
+        if day == 0:
+            continue
+        print(day)
