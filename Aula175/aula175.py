@@ -15,3 +15,11 @@
 #
 # Ao converter de Python para JSON:
 # Python        JSON
+# dict          object
+# list, tuple   array
+# str           string
+# int, float    number
+# True          true
+# False         false
+# None          null
+#
