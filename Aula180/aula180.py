@@ -13,7 +13,14 @@ lista_clientes = [
 ]
 with open(CAMINHO_CSV, 'w') as arquivo:
     nome_colunas = lista_clientes[0].keys()
-    escritor = csv.writer(arquivo)
+    escritor = csv.DictWriter(
+        arquivo,
+        fieldnames=nome_colunas
+        )
+    escritor.writeheader()
+    for cliente in lista_clientes:
+        print(cliente)
+        escritor.writerow(cliente)
 
 # lista_clientes = [
 #     ['Luiz Otávio', 'Av 1, 22'],
