@@ -2,24 +2,32 @@ import requests
 from pprint import pprint
 from pathlib import Path
 from get_token import token
-
-WORKDIR = Path(__file__).parent
-TOKEN_FILE = WORKDIR / 'token.txt'
+from requests_toolbelt import MultipartEncoder
+from mimetypes import MimeTypes
 
 _print = print
 print = pprint
 
-url = 'http://localhost:3001/alunos/3'
+WORKDIR = Path(__file__).parent
+TOKEN_FILE = WORKDIR / 'token.txt'
+mimetypes = MimeTypes()
 
-headers: dict = dict(
-    Authorization=token
-)
+nome_arquivo = WORKDIR / 'foto.jpg'
+mimetype_arquivo = mimetypes.guess_type(nome_arquivo)[0]
 
-aluno_data: dict = dict(
-    # nome='Pedro'
-)
+multipart = MultipartEncoder(fields={
+    'aluno_id': '2',
+    'foto': (nome_arquivo, open(nome_arquivo, 'rb'), mimetype_arquivo)
+})
 
-response = requests.delete(url=url, json=aluno_data, headers=headers)
+url = 'http://localhost:3001/fotos'
+
+headers: dict = {
+    'Authorization': token,
+    'Content-Type': multipart.content_type
+}
+
+response = requests.put(url=url, headers=headers)
 
 if response.status_code >= 200 and response.status_code <= 299:
     # Sucesso

@@ -130,3 +130,6 @@ dmypy.json
 
 # Sub repositórios
 Python/
+
+# images
+*.jpg
