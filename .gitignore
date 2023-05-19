@@ -133,3 +133,6 @@ Python/
 
 # images
 *.jpg
+
+# Executables
+*.exe
