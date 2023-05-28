@@ -16,7 +16,7 @@
     "editor.fontLigatures": true,
     "terminal.integrated.fontFamily": "",
     "[python]": {
-      "editor.defaultFormatter": "ms-python.python",
+      "editor.defaultFormatter": "ms-python.autopep8",
       "editor.tabSize": 4,
       "editor.insertSpaces": true,
       "editor.formatOnSave": true,
@@ -43,5 +43,6 @@
     "python.analysis.diagnosticSeverityOverrides": {},
     // "python.defaultInterpreterPath": "./venv/bin/python",
     "python.analysis.typeCheckingMode": "basic",
-    "cSpell.enabled": false
+    "cSpell.enabled": false,
+    "python.formatting.provider": "none"
   }
