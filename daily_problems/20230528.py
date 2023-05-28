@@ -49,6 +49,8 @@ possible_steps = [1, 3, 5]
 number_steps = 6
 
 all_ways = get_possible_steps(possible_steps, number_steps)
+print(f'X: {possible_steps}')
+print(f'N: {number_steps}')
 for sequence in all_ways:
     print(sequence)
 print(f'Max number of ways: {len(all_ways)}')
