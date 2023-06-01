@@ -1,5 +1,6 @@
 from time import sleep
 from threading import Thread
+from threading import Lock
 
 
 # class MeuThread(Thread):
@@ -58,16 +59,20 @@ from threading import Thread
 class Ingressos:
     def __init__(self, estoque):
         self.estoque = estoque
+        self.lock = Lock()
 
     def comprar(self, quantidade):
+        self.lock.acquire()
         if self.estoque < quantidade:
             print('Não temos ingressos suficientes.')
+            self.lock.release()
             return
         sleep(1)
 
         print(f'Você comprou {quantidade} ingressos. '
               f'Ainda temos {self.estoque}')
         self.estoque -= quantidade
+        self.lock.release()
 
 
 if __name__ == '__main__':
