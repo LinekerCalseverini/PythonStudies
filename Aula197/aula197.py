@@ -6,7 +6,8 @@
 # A documentação contém todas as informações necessárias para usar PyPDF2.
 # Link: https://pypdf2.readthedocs.io/en/3.0.0/
 from pathlib import Path
-from PyPDF2 import PdfReader, PdfWriter, PdfMerger
+# from PyPDF2 import PdfReader, PdfWriter, PdfMerger
+from PyPDF2 import PdfReader, PdfMerger
 
 PASTA_RAIZ = Path(__file__).parent
 PASTA_ORIGINAIS = PASTA_RAIZ / 'pdfs_originais'
@@ -50,3 +51,7 @@ files = [
 
 merger = PdfMerger()
 for file in files:
+    merger.append(file)
+
+merger.write(PASTA_NOVA / 'MERGED.pdf')
+merger.close()
