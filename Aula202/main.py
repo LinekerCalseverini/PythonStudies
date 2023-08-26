@@ -7,6 +7,7 @@ from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import (QApplication)
 from variables import WINDOW_ICON_PATH
 from styles import setupTheme
+from buttons import Button
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
@@ -25,6 +26,12 @@ if __name__ == '__main__':
     # Display
     display = Display()
     window.addToVLayout(display)
+
+    button = Button('Texto do Botão')
+    window.addToVLayout(button)
+
+    button2 = Button('Texto do Botão')
+    window.addToVLayout(button2)
 
     # Executa tudo
     window.adjustFixedSize()
