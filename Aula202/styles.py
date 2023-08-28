@@ -1,37 +1,38 @@
 # QSS - Estilos do QT for Python
+# https://doc.qt.io/qtforpython/tutorials/basictutorial/widgetstyling.html
+# Dark Theme
+# https://pyqtdarktheme.readthedocs.io/en/latest/how_to_use.html
 import qdarktheme
-from variables import (PRIMARY_COLOR,
-                       DARKER_PRIMARY_COLOR,
-                       DARKEST_PRIMARY_COLOR)
+from variables import (DARKER_PRIMARY_COLOR, DARKEST_PRIMARY_COLOR,
+                       PRIMARY_COLOR)
 
-
-qss = f'''
-    PushButton[cssClass="specialButton"] {{
+qss = f"""
+    QPushButton[cssClass="specialButton"] {{
         color: #fff;
         background: {PRIMARY_COLOR};
     }}
-    PushButton[cssClass="specialButton"]:hover {{
+    QPushButton[cssClass="specialButton"]:hover {{
         color: #fff;
         background: {DARKER_PRIMARY_COLOR};
     }}
-    PushButton[cssClass="specialButton"]:pressed {{
+    QPushButton[cssClass="specialButton"]:pressed {{
         color: #fff;
         background: {DARKEST_PRIMARY_COLOR};
     }}
-'''
+"""
 
 
 def setupTheme():
     qdarktheme.setup_theme(
         theme='dark',
-        corner_shape='sharp',
+        corner_shape='rounded',
         custom_colors={
             "[dark]": {
-                "primary": PRIMARY_COLOR
+                "primary": f"{PRIMARY_COLOR}",
             },
             "[light]": {
-                "primary": PRIMARY_COLOR
-            }
+                "primary": f"{PRIMARY_COLOR}",
+            },
         },
         additional_qss=qss
     )
