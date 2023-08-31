@@ -8,6 +8,7 @@ from utils import isNumOrDot, isEmpty, isValidNumber
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from display import Display
+    from main_window import MainWindow
     from info import Info
 
 
@@ -28,6 +29,7 @@ class ButtonsGrid(QGridLayout):
         self,
         display: 'Display',
         info: 'Info',
+        window: 'MainWindow',
         *args, **kwargs
     ) -> None:
         super().__init__(*args, **kwargs)
@@ -42,6 +44,7 @@ class ButtonsGrid(QGridLayout):
 
         self.display = display
         self.info = info
+        self.window = window
         self._equation = ''
         self._equationInitialValue = 'Sua conta'
         self._left = None
@@ -127,7 +130,7 @@ class ButtonsGrid(QGridLayout):
         # Se a pessoa clicou no operador sem
         # configurar qualquer número
         if not isValidNumber(displayText) and self._left is None:
-            print('Não tem nada para colocar no valor da esquerda')
+            self._showError('Você não digitou nada.')
             return
 
         # Se houver algo no número da esquerda,
@@ -166,3 +169,9 @@ class ButtonsGrid(QGridLayout):
 
         if result != 'error':
             self._left = result
+
+    def _showError(self, text):
+        msgBox = self.window.makeMsgBox()
+        msgBox.setText(text)
+        msgBox.setIcon(msgBox.Icon.Critical)
+        msgBox.exec()

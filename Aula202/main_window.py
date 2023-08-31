@@ -1,5 +1,5 @@
 from PySide6.QtWidgets import (QMainWindow, QVBoxLayout,
-                               QWidget)
+                               QWidget, QMessageBox)
 
 
 class MainWindow(QMainWindow):
@@ -22,3 +22,6 @@ class MainWindow(QMainWindow):
 
     def addWidgetToVLayout(self, widget: QWidget):
         self.vLayout.addWidget(widget)
+
+    def makeMsgBox(self):
+        return QMessageBox(self)
