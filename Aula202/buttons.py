@@ -63,7 +63,7 @@ class ButtonsGrid(QGridLayout):
         self.info.setText(value)
 
     def vouApagarVocê(self, *args):
-        print('Sinal recebido pela classe ', type(self).__name__, args)
+        ...
 
     def _makeGrid(self):
         self.display.eqPressed.connect(self.vouApagarVocê)
