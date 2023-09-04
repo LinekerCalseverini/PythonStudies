@@ -1,5 +1,4 @@
-from PySide6.QtWidgets import (QMainWindow, QVBoxLayout,
-                               QWidget, QMessageBox)
+from PySide6.QtWidgets import QMainWindow, QMessageBox, QVBoxLayout, QWidget
 
 
 class MainWindow(QMainWindow):
@@ -15,8 +14,8 @@ class MainWindow(QMainWindow):
         # Título da janela
         self.setWindowTitle('Calculadora')
 
-        # Última coisa a ser feita
     def adjustFixedSize(self):
+        # Última coisa a ser feita
         self.adjustSize()
         self.setFixedSize(self.width(), self.height())
 
