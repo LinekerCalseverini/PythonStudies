@@ -1,0 +1,13 @@
+def funcao1(mensagem):
+    def funcaoInterna(funcao):
+        def wrapper(*args, **kwargs):
+            print(mensagem)
+            return funcao(*args, **kwargs)
+        return wrapper
+    return funcaoInterna
+
+@funcao1('Esse cara é corno')
+def funcao2(nome):
+    print(nome)
+
+funcao2('Filipe')
