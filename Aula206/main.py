@@ -6,7 +6,7 @@ import os
 
 import pymysql
 import dotenv
-from pymysql.cursors import SSDictCursor
+from pymysql.cursors import DictCursor
 
 TABLE_NAME = 'customers'
 
@@ -17,7 +17,7 @@ connection = pymysql.connect(
     user=os.environ['MYSQL_USER'],
     passwd=os.environ['MYSQL_PASSWORD'],
     database=os.environ['MYSQL_DATABASE'],
-    cursorclass=SSDictCursor  # type: ignore
+    cursorclass=DictCursor  # type: ignore
 )
 
 with connection:
@@ -138,23 +138,33 @@ with connection:
 
     # Editando com UPDATE
     with connection.cursor() as cursor:
+        cursor.execute(
+            f'SELECT id from {TABLE_NAME} ORDER BY id DESC LIMIT 1'
+        )
+        lastIdFromSelect = cursor.fetchone()
+
         sql = (
             f'UPDATE {TABLE_NAME} '
             'SET nome=%s, idade=%s '
             'WHERE id=%s'
         )
         cursor.execute(sql, ('Eleonor', 102, 4))
-        connection.commit()
+        resultFromSelect = cursor.execute(f'SELECT * FROM {TABLE_NAME}')
 
-        cursor.execute(f'SELECT * FROM {TABLE_NAME}')
+        data6 = cursor.fetchall()
 
-        print('For 1:')
-        for row in cursor.fetchall_unbuffered():
+        for row in data6:
             print(row)
 
-            if row['id'] >= 5:
-                break
+        print('resultFromSelect', resultFromSelect)
+        print('len(data6)', len(data6))
+        print('rowcount', cursor.rowcount)
+        print('lastrowid', cursor.lastrowid)
+        print('lastrowid na mão', lastIdFromSelect)
 
-        print('\nFor 2:')
-        for row in cursor.fetchall_unbuffered():
+        cursor.scroll(0, 'absolute')
+        print('rownumber', cursor.rownumber)
+        for row in cursor.fetchall():
             print(row)
+
+    connection.commit()
